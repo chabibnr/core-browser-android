@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "178348990599",
+    "project_id": "afresto-browser",
+    "storage_bucket": "afresto-browser.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178348990599:android:55cf25df8be246b86f5822",
+        "android_client_info": {
+          "package_name": "id.afresto.exam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "178348990599-449ubh6g9if48ijc77sb99466ci6i4aq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcWmQcmdjG5UFUDCRoOL-KABgdjY0BWwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "178348990599-449ubh6g9if48ijc77sb99466ci6i4aq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
