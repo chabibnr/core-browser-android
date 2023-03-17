@@ -2,9 +2,13 @@ package id.afresto.orangtua;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.DownloadManager;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements AdvancedWebView.L
         mWebView.setListener(this, this);
         mWebView.setMixedContentAllowed(false);
         //mWebView.loadUrl("http://192.168.65.21:9090/");
-        //mWebView.loadUrl("http://192.168.1.3:9090/");
+        ///mWebView.loadUrl("http://192.168.1.100:8080/");
         mWebView.loadUrl("https://parent.afresto.id/");
         mWebView.getSettings().setSupportMultipleWindows(true);
         mWebView.getSettings().setJavaScriptEnabled(true);
@@ -167,10 +171,22 @@ public class MainActivity extends AppCompatActivity implements AdvancedWebView.L
     public void onDownloadRequested(String url, String suggestedFilename, String mimeType,
                                     long contentLength, String contentDisposition,
                                     String userAgent) {
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //i.setPackage("com.android.chrome");
+        try {
+            startActivity(i);
+        } catch (ActivityNotFoundException e) {
+            // Chrome is probably not installed
+            // Try with the default browser
+            i.setPackage(null);
+            startActivity(i);
+        }
     }
 
     @Override
     public void onExternalPageRequest(String url) {
+        Log.d("------External", url);
     }
 
     // Declare the launcher at the top of your Activity/Fragment:
